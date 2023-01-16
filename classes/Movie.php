@@ -1,18 +1,20 @@
 <?php 
-require_once __DIR__ . "/Genre.php";
+require_once __DIR__ . "/Genere.php";
 
 class Movie {
   private $titolo;
   private $genere;
   private $durata;
-  private $attori;
+  private $nomeCompleto;
+  private $nome;
+  private $cognome;
   
-  function __construct($_titolo, $_genere,$_durata,$_attori, Genre $_nuovoGenere) {
+  function __construct($_titolo, $_genere,$_durata,$nome, $cognome, Genere $_nuovoGenere) {
     
     $this->setTitolo($_titolo);
     $this->setGenere($_genere);
     $this->setDurata($_durata);
-    $this->setAttori($_attori);
+    $this->setNomeCognome($nome, $cognome);
 
     if ($_nuovoGenere) {
       
@@ -83,9 +85,9 @@ class Movie {
   /**
    * Get the value of attori
    */ 
-  public function getAttori()
+  public function getNomeCompleto()
   {
-    return $this->attori;
+    return $this->nomeCompleto;
   }
 
   /**
@@ -93,9 +95,11 @@ class Movie {
    *
    * @return  self
    */ 
-  public function setAttori($_attori)
+  public function setNomeCognome($nome, $cognome)
   {
-    $this->attori = $_attori;
+    $this->nome = $nome;
+    $this->cognome = $cognome;
+    $this->nomeCompleto = $nome . " " . $cognome;
 
     return $this;
   }
